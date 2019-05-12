@@ -1,0 +1,64 @@
+---
+title: "Index"
+author: "Joshua Lansing"
+date: "May 10, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+source("analysis.R")
+```
+## Summary information
+The data was provided by [Shooting Tracker](http://www.shootingtracker.com/).
+There were a total of `r num_shootings` in 2018. `r lives_lost` lives were lost
+that year. `r city_most_impacted` suffered the most casualties (injured and 
+killed). `r state_most_impacted` was the state that suffered the most 
+casualties. And `r state_least_impacted` suffered the least amount of 
+casualties.
+
+## Summary Table
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+kable(summary_table)
+```
+
+By and large, we can see from this table, at least by state, the number of
+those injured is larger than those killed. In fact, only two states has a
+higher amount of people killed than injured. We can also see that the most
+casualties appear to happen in states with highest in states known for having
+higher populations (eg. California, Florida).
+
+## Description of a particular incident
+On `r cal_date`, a terrible shooting occurred at `r cal_address` in southern
+California. According to [USA Today](https://www.usatoday.com/story/news/2018/11/08/mass-shooting-borderline-bar-grill-thousand-oaks-southern-california/1927840002/), `r cal_killed` were killed, and 
+`r cal_injured` were injured. This totals to `r cal_killed + cal_injured`
+casualties.
+
+## Interactive map
+This map is used to visually view the location of shootings, as well as their
+magnitude by number of casualties.
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+map_plot
+```
+Here we see that most of the shootings occur in the south-eastern parts of the
+US. We can also see the severity (number of casualties) appears to go up as the
+size of the cities goes up.
+
+## Plot of Choice
+I decided to ask myself "Were there months throughout 2018 that had more
+or less shooting casualties than others?"
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+casualties_per_month
+```
+
+The chart shows that significantly more shootings happened in June and July
+than in other months. I also found it interesting that the least amount of
+shootings occurred in December. I can't say much for sure, considering this is
+only showing shootings from 2018, but perhaps shooting rates change with
+travelling seasons. 
+i.e: People usually travel more in the summer, and people are more likely to
+stay home, or travel differently for the holidays in the winter.
